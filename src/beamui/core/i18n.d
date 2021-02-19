@@ -19,7 +19,13 @@ import beamui.core.functions;
 import beamui.core.logger;
 import beamui.core.resources;
 
-/// Translate a message into current application language
+/** Translate a message into current application language.
+
+    Params:
+     original = The original message to translate
+    Returns: Translated message if a translation was found,
+     original message otherwise
+*/
 dstring tr(string original)
 {
     string translated = original;
@@ -32,7 +38,15 @@ dstring tr(string original)
     return translated.toUTF32;
 }
 
-/// Translate a singular or a plural form of the message by the number
+/** Translate a singular or a plural form of the message by the number.
+
+    Params:
+        singular = The original message in singular form
+        plural = The original message in plural form
+        n = Number to calculate the plural form
+    Returns: Translated string in plural form depending on number n.
+    If translation does not exists, returns the original message
+*/
 dstring tr(string singular, string plural, int n)
 {
     string def = n > 1 ? plural : singular;
