@@ -14,6 +14,7 @@ interface UndoOperation
 {
     /// Try to merge two operations, return true if succeded
     bool merge(UndoOperation);
+    /// Notify when component has been modified, allows to update internal state in consequence
     void modified();
 }
 
@@ -84,7 +85,7 @@ class UndoBuffer
         _savedState = null;
     }
 
-    /// The current state is saved
+    /// The current state is saved, modified() is called on all undo / redo events
     void saved()
     {
         _savedState = _undoStack.back;
